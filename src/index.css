@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animateText {
+  border-right: solid 1px rgba(255, 255, 255, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 1);
+}
+
+.animateText {
+  animation: animated-text 1s steps(6, end) 1s 1 normal both,
+    animated-cursor 200ms steps(28, end) infinite;
+}
+
+.animateText-lg {
+  border-right: solid 1px rgba(255, 255, 255, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 1);
+  animation: animated-text-lg 1s steps(10, end) 2s 1 normal both,
+    animated-cursor 200ms steps(28, end) 2s infinite;
+}
+@keyframes animated-text-lg {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 45px;
+  }
+}
+
+@keyframes animated-cursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 1);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
