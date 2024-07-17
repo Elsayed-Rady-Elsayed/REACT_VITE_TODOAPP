@@ -57,7 +57,7 @@ export const AddTask = () => {
       }}
     >
       <div className="grid grid-cols-1 gap-2">
-        <BackBtn path={"/home"} />
+        <BackBtn path={"/REACT_VITE_TODOAPP/home"} />
         <TextField
           setClicked={clickedAdd}
           name="title"
