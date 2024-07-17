@@ -22,7 +22,7 @@ export const ShowTasks = () => {
   return (
     <div className=" grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 m-5 md:m-3 gap-3 mt-3">
       <Link
-        to="/home/addTask"
+        to="/REACT_VITE_TODOAPP/home/addTask"
         className={`fixed bottom-10 right-10 cursor-pointer bg-white h-10 w-10 flex items-center justify-center rounded-[50%]`}
       >
         <i className="fa-solid fa-plus"></i>

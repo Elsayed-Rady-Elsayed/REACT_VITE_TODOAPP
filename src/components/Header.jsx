@@ -6,7 +6,7 @@ export const Header = (props) => {
   return (
     <>
       <div className="header container m-auto p-2 flex justify-between items-center">
-        <Link to="/">
+        <Link to="/REACT_VITE_TODOAPP/">
           <h2
             className={`${
               props.activeTextAnimation ? "animateText" : ""

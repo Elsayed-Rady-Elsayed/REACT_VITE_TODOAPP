@@ -41,7 +41,7 @@ export const AddTask = () => {
       setTaskAtomStored((prev) => {
         return [...prev, TaskData];
       });
-      navigator("/home");
+      navigator("/REACT_VITE_TODOAPP/home");
     } else {
       setAcceptData(false);
     }
