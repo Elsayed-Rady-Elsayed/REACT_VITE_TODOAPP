@@ -14,10 +14,16 @@ function App() {
     <div className="bg-[#121212] h-svh">
       <Header activeTextAnimation />
       <Routes>
-        <Route path="/" element={<OnBoarding activeTextAnimation />} />
-        <Route path="/home" element={<Home />}>
-          <Route path="/home" element={<ShowTasks />} />
-          <Route path="/home/addTask" element={<AddTask />} />
+        <Route
+          path="/REACT_VITE_TODOAPP/"
+          element={<OnBoarding activeTextAnimation />}
+        />
+        <Route path="/REACT_VITE_TODOAPP/home" element={<Home />}>
+          <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
+          <Route
+            path="/REACT_VITE_TODOAPP/home/addTask"
+            element={<AddTask />}
+          />
         </Route>
       </Routes>
 
