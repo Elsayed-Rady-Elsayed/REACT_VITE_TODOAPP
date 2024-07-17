@@ -12,7 +12,7 @@ export const OnBoarding = (props) => {
       <h1
         className={`text-white mb-4 py-2 ${
           props.activeTextAnimation ? "animateText-lg" : ""
-        } text-4xl capitalize`}
+        } text-2xl md:text-4xl lg:text-4xl capitalize`}
         style={{}}
       >
         start doing your tasks
