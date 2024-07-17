@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 export const TextField = (props) => {
+  const inputRef = useRef(0);
+  const [val, setVal] = useState("");
+  const focusInput = (color) => {
+    inputRef.current.style.borderColor = color;
+  };
+  if (props.setClicked && val == "") {
+    focusInput("red");
+  } else if (props.setClicked && val.length > 0) {
+    focusInput("#596A95");
+  }
   return (
     <div className="flex flex-col text-white/80 capitalize font-light">
       <label className="mb-2" htmlFor={props.name}>
         {props.placeholder}
       </label>
       <input
+        ref={inputRef}
         style={{
           boxShadow: "inset 2px 5px 10px rgba(0, 0, 0, 0.3)",
         }}
@@ -16,6 +27,21 @@ export const TextField = (props) => {
         name={props.name}
         autoComplete="off"
         type={props.type}
+        value={val}
+        onChange={(evt) => {
+          if (evt.target.value === "") {
+            focusInput("red");
+          }
+          if (props.name == "title") {
+            if (evt.target.value.trim() === "") {
+              focusInput("red");
+            }
+          }
+          setVal(evt.target.value);
+          if (evt.target.value.trim().length > 0) {
+            props.value(evt);
+          }
+        }}
       />
     </div>
   );
