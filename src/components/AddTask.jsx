@@ -5,6 +5,7 @@ import { BackBtn } from "./BackBtn";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { TasksAtom } from "../recoil/tasksAtom";
+import "../styles/animatedButton.css";
 export const AddTask = () => {
   const navigator = useNavigate();
   const [TaskData, setTaskData] = useState({
@@ -13,6 +14,8 @@ export const AddTask = () => {
     start: "",
     end: "",
     description: "",
+    done: false,
+    pending: false,
   });
   const [clickedAdd, setClickedAdd] = useState(false);
   const [TaskAtomStored, setTaskAtomStored] = useRecoilState(TasksAtom);
@@ -99,7 +102,7 @@ export const AddTask = () => {
             setClickedAdd(true);
             handleAcceptData();
           }}
-          className="bg-white rounded-2xl p-2 transition-all border border-transparent hover:border-white hover:bg-transparent hover:text-white"
+          className="btn w-full mt-2"
         >
           add task
         </button>

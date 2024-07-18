@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GetStartedBtn } from "./GetStartedBtn";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 export const Header = (props) => {
+  const cookie = new Cookies();
   return (
     <>
       <div className="header container m-auto md:p-5 lg:p-5 flex justify-between items-center px-10 py-5">
@@ -18,7 +20,22 @@ export const Header = (props) => {
             TODO
           </h2>
         </Link>
-        <div>
+        <div className="flex items-center gap-2">
+          {cookie.get("isLogined") ? (
+            ""
+          ) : (
+            <Link
+              to="/REACT_VITE_TODOAPP/home/login"
+              className="btn"
+              style={{
+                fontSize: "14px",
+                padding: "3px",
+                height: "fit-content",
+              }}
+            >
+              Login
+            </Link>
+          )}
           <a href="https://github.com/Elsayed-Rady-Elsayed">
             <i className="fa-brands fa-github text-gray-600 hover:text-white transition-all"></i>
           </a>

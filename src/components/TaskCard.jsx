@@ -1,5 +1,4 @@
 import React from "react";
-
 export const TaskCard = (props) => {
   return (
     <div className="overflow-hidden cursor-pointer container m-auto p-2 bg-[#222630] w-[100%] px-3 py-2 outline-none text-white rounded-lg border-2 transition-colors duration-100 border-solid hover:border-[#596A95] border-[#2B3040]">

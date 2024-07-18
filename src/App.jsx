@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { Routes, Route, Router } from "react-router-dom";
@@ -9,6 +9,8 @@ import { OnBoarding } from "./components/OnBoarding";
 import { Home } from "./pages/Home";
 import { AddTask } from "./components/AddTask";
 import { ShowTasks } from "./components/ShowTasks";
+import { Login } from "./components/Login";
+import { Register } from "./components/Register";
 function App() {
   return (
     <div className="bg-[#121212] h-svh">
@@ -19,6 +21,11 @@ function App() {
           element={<OnBoarding activeTextAnimation />}
         />
         <Route path="/REACT_VITE_TODOAPP/home" element={<Home />}>
+          <Route path="/REACT_VITE_TODOAPP/home/login" element={<Login />} />
+          <Route
+            path="/REACT_VITE_TODOAPP/home/register"
+            element={<Register />}
+          />
           <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
           <Route
             path="/REACT_VITE_TODOAPP/home/addTask"

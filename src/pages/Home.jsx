@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 
 export const Home = () => {
   return (
-    <div className="container m-auto">
+    <div className="container m-auto bg-[#121212]">
       <Outlet />
     </div>
   );

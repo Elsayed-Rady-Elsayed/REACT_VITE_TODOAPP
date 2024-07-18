@@ -26,6 +26,7 @@ export const TextArea = (props) => {
         placeholder={props.placeholder}
         id={props.name}
         style={{
+          resize: "none",
           boxShadow: "inset 2px 5px 10px rgba(0, 0, 0, 0.3)",
         }}
         onChange={(evt) => {
