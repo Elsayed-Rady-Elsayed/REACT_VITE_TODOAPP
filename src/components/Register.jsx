@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField } from "./TextField";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, fireStore } from "../firebase/fireBase";
 import { AuthAlert } from "./AuthAlert";
-import { doc, setDoc } from "firebase/firestore";
-import Cookies from "universal-cookie";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useRecoilState } from "recoil";
+import { userAtom } from "../recoil/user";
 export const Register = () => {
   const navigator = useNavigate();
   const [acceptData, setAcceptData] = useState(false);
   const [clickedAdd, setClickedAdd] = useState(false);
-  const cookie = new Cookies();
+  const [userData, setUserData] = useRecoilState(userAtom);
+
   const [alertData, setAlertData] = useState({
     color: "",
     title: "",
@@ -49,7 +51,6 @@ export const Register = () => {
             firstName: UserData.firstName,
             lastName: UserData.lastName,
           });
-          cookie.set("isLogined", true);
         }
         setAlertData({
           color: "bg-green-500",
@@ -67,6 +68,19 @@ export const Register = () => {
       }
     }
   };
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const docRef = doc(fireStore, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserData(docSnap.data());
+        }
+      }
+    });
+  }, []);
+
   const handleOnChange = (evt) => {
     const { name, value } = evt.target;
     setUserata((prev) => {

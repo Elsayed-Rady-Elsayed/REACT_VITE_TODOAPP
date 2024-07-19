@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "./TextField";
 import { TextArea } from "./TextArea";
 import { BackBtn } from "./BackBtn";
@@ -6,7 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { TasksAtom } from "../recoil/tasksAtom";
 import "../styles/animatedButton.css";
+import { auth, fireStore } from "../firebase/fireBase";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { fetchUserTasks } from "../firebase/getTasks";
 export const AddTask = () => {
+  fetchUserTasks();
   const navigator = useNavigate();
   const [TaskData, setTaskData] = useState({
     title: "",
@@ -29,8 +33,25 @@ export const AddTask = () => {
       };
     });
   };
+  const [isLogineduser, setIsLoginedUser] = useState();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setIsLoginedUser(user);
+    });
+  }, []);
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        await updateDoc(doc(fireStore, "Users", user.uid), {
+          taskData: [...TaskAtomStored, TaskData],
+        });
+        navigator("/REACT_VITE_TODOAPP/home");
+      } else {
+        handleAcceptData();
+        navigator("/REACT_VITE_TODOAPP/home");
+      }
+    });
   };
   const handleAcceptData = () => {
     if (
@@ -44,12 +65,10 @@ export const AddTask = () => {
       setTaskAtomStored((prev) => {
         return [...prev, TaskData];
       });
-      navigator("/REACT_VITE_TODOAPP/home");
     } else {
       setAcceptData(false);
     }
   };
-  console.log(TaskData);
   console.log(TaskAtomStored);
   return (
     <form
@@ -100,7 +119,6 @@ export const AddTask = () => {
         <button
           onClick={() => {
             setClickedAdd(true);
-            handleAcceptData();
           }}
           className="btn w-full mt-2"
         >

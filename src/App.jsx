@@ -12,50 +12,46 @@ import { ShowTasks } from "./components/ShowTasks";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 function App() {
-  return (
-    <div className="bg-[#121212] h-svh">
-      <Header activeTextAnimation />
-      <Routes>
-        <Route
-          path="/REACT_VITE_TODOAPP/"
-          element={<OnBoarding activeTextAnimation />}
-        />
-        <Route path="/REACT_VITE_TODOAPP/home" element={<Home />}>
-          <Route path="/REACT_VITE_TODOAPP/home/login" element={<Login />} />
-          <Route
-            path="/REACT_VITE_TODOAPP/home/register"
-            element={<Register />}
-          />
-          <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
-          <Route
-            path="/REACT_VITE_TODOAPP/home/addTask"
-            element={<AddTask />}
-          />
-        </Route>
-      </Routes>
-
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+  const [content, setContent] = useState(
+    <div className="loader">
+      <div className="square" id="sq1"></div>
+      <div className="square" id="sq2"></div>
+      <div className="square" id="sq3"></div>
+      <div className="square" id="sq4"></div>
+      <div className="square" id="sq5"></div>
+      <div className="square" id="sq6"></div>
+      <div className="square" id="sq7"></div>
+      <div className="square" id="sq8"></div>
+      <div className="square" id="sq9"></div>
     </div>
   );
+
+  setTimeout(() => {
+    setContent(
+      <>
+        <Header activeTextAnimation />
+        <Routes>
+          <Route
+            path="/REACT_VITE_TODOAPP/"
+            element={<OnBoarding activeTextAnimation />}
+          />
+          <Route path="/REACT_VITE_TODOAPP/home" element={<Home />}>
+            <Route path="/REACT_VITE_TODOAPP/home/login" element={<Login />} />
+            <Route
+              path="/REACT_VITE_TODOAPP/home/register"
+              element={<Register />}
+            />
+            <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
+            <Route
+              path="/REACT_VITE_TODOAPP/home/addTask"
+              element={<AddTask />}
+            />
+          </Route>
+        </Routes>
+      </>
+    );
+  }, 2000);
+  return <div className="bg-[#121212] h-svh">{content}</div>;
 }
 
 export default App;
