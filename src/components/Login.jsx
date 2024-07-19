@@ -121,7 +121,7 @@ export const Login = () => {
               className="underline cursor-pointer font-bold"
             >
               {" "}
-              register
+              Register
             </Link>
           </p>
         </form>
