@@ -77,14 +77,14 @@ export const EditTask = () => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       } else {
         // handleAcceptData();
         let list = [];
         setTaskAtomStored(list);
         list = [TaskAtomStored];
         list[taskId] = TaskData;
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };

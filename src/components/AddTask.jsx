@@ -53,10 +53,10 @@ export const AddTask = () => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: [...TaskAtomStored, TaskData],
         });
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       } else {
         handleAcceptData();
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };
