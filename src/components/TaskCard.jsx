@@ -31,10 +31,11 @@ export const TaskCard = (props) => {
         nav("/REACT_VITE_TODOAPP/home");
         reloadPage();
       } else {
-        let list = [];
-        list = [...tasksRec];
-        list[props.id]["done"] = !v;
-        setTasksRec(list);
+        setTasksRec((prevList) =>
+          prevList.map((item, idx) =>
+            idx === props.id ? { ...item, done: !item.done } : item
+          )
+        );
       }
     });
   };

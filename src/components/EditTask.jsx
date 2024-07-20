@@ -80,7 +80,11 @@ export const EditTask = () => {
         navigator("/REACT_VITE_TODOAPP/home");
       } else {
         // handleAcceptData();
-        // navigator("/REACT_VITE_TODOAPP/home");
+        let list = [];
+        list = [TaskAtomStored];
+        list[taskId] = TaskData;
+        setTaskAtomStored(list);
+        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };

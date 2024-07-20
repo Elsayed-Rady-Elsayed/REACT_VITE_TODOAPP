@@ -3,10 +3,14 @@ import "./Timer.css";
 import { useNavigate } from "react-router-dom";
 import { auth, fireStore } from "../firebase/fireBase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { useRecoilState } from "recoil";
+import { TasksAtom } from "../recoil/tasksAtom";
 export const Timer = (props) => {
   const [t, sett] = useState("");
   const nav = useNavigate();
   const id = Number(window.location.pathname.split("/").splice(-1).join());
+  const [tasksRec, setTasksRec] = useRecoilState(TasksAtom);
+
   let time = "";
   const reloadPage = () => {
     window.location.reload();
@@ -49,10 +53,12 @@ export const Timer = (props) => {
         nav("/REACT_VITE_TODOAPP/home");
         reloadPage();
       } else {
-        let list = [];
-        list = [...tasksRec];
-        list[props.id]["done"] = true;
-        setTasksRec(list);
+        setTasksRec((prevList) =>
+          prevList.map((item, idx) =>
+            idx === id ? { ...item, done: !item.done } : item
+          )
+        );
+        nav("/REACT_VITE_TODOAPP/home");
       }
     });
   };

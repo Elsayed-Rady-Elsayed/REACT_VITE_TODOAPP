@@ -56,7 +56,7 @@ export const AddTask = () => {
         navigator("/REACT_VITE_TODOAPP/home");
       } else {
         handleAcceptData();
-        // navigator("/REACT_VITE_TODOAPP/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };
