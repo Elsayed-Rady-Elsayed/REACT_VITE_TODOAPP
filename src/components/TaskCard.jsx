@@ -28,7 +28,7 @@ export const TaskCard = (props) => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        window.location.href = "/REACT_VITE_TODOAPP/home";
+        window.location.href = "/home";
         // nav("/REACT_VITE_TODOAPP/home");
         reloadPage();
       } else {
