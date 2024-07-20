@@ -12,7 +12,7 @@ export const TaskCard = (props) => {
   };
   const [tasksRec, setTasksRec] = useRecoilState(TasksAtom);
   const goToEditProduct = () => {
-    nav(`/REACT_VITE_TODOAPP/home/eidtTask/${props.id}`);
+    nav(`/home/eidtTask/${props.id}`);
   };
 
   const handeSetDone = (v) => {
@@ -28,8 +28,7 @@ export const TaskCard = (props) => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        window.location.href = "/home";
-        // nav("/REACT_VITE_TODOAPP/home");
+        nav("/home");
         reloadPage();
       } else {
         setTasksRec((prevList) =>
@@ -53,8 +52,7 @@ export const TaskCard = (props) => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        // nav("/REACT_VITE_TODOAPP/home");
-        window.location.href = "/REACT_VITE_TODOAPP/home";
+        nav("/home");
         reloadPage();
       } else {
         let list = [];

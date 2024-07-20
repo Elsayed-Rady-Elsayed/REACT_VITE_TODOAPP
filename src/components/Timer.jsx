@@ -50,7 +50,7 @@ export const Timer = (props) => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        nav("/REACT_VITE_TODOAPP/home");
+        nav("/home");
         reloadPage();
       } else {
         setTasksRec((prevList) =>
@@ -58,7 +58,7 @@ export const Timer = (props) => {
             idx === id ? { ...item, done: !item.done } : item
           )
         );
-        nav("/REACT_VITE_TODOAPP/home");
+        nav("/home");
       }
     });
   };
@@ -79,7 +79,7 @@ export const Timer = (props) => {
         <button
           className="btn bg-yellow-500 w-full"
           onClick={() => {
-            nav("/REACT_VITE_TODOAPP/home");
+            nav("/home");
             reloadPage();
           }}
         >
