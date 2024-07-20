@@ -53,10 +53,10 @@ export const AddTask = () => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: [...TaskAtomStored, TaskData],
         });
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       } else {
         handleAcceptData();
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };
@@ -85,7 +85,7 @@ export const AddTask = () => {
       }}
     >
       <div className="grid grid-cols-1 gap-2">
-        <BackBtn path={"/home"} />
+        <BackBtn path={"/REACT_VITE_TODOAPP/home"} />
         <TextField
           setClicked={clickedAdd}
           name="title"

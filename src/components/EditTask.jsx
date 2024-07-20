@@ -81,10 +81,10 @@ export const EditTask = () => {
       } else {
         // handleAcceptData();
         let list = [];
+        setTaskAtomStored(list);
         list = [TaskAtomStored];
         list[taskId] = TaskData;
-        setTaskAtomStored(list);
-        navigator("/home");
+        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };
@@ -107,7 +107,7 @@ export const EditTask = () => {
       }}
     >
       <div className="grid grid-cols-1 gap-2">
-        <BackBtn path={"/home"} />
+        <BackBtn path={"/REACT_VITE_TODOAPP/home"} />
         <div className="flex flex-col text-white/80 capitalize font-light">
           <label className="mb-2" htmlFor={"Title"}>
             {"Title"}
