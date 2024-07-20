@@ -36,17 +36,26 @@ function App() {
         <Header activeTextAnimation />
         <Routes>
           <Route
-            path="/gh-pages-url"
+            path="/REACT_VITE_TODOAPP/"
             element={<OnBoarding activeTextAnimation />}
           />
-          <Route path="/gh-pages-url/home" element={<Home />}>
-            <Route path="/gh-pages-url/home/login" element={<Login />} />
-            <Route path="/gh-pages-url/home/register" element={<Register />} />
-            <Route path="/gh-pages-url/home" element={<ShowTasks />} />
-            <Route path="/gh-pages-url/home/timer/:id" element={<Timer />} />
-            <Route path="/gh-pages-url/home/addTask" element={<AddTask />} />
+          <Route path="/REACT_VITE_TODOAPP/home" element={<Home />}>
+            <Route path="/REACT_VITE_TODOAPP/home/login" element={<Login />} />
             <Route
-              path="/gh-pages-url/home/eidtTask/:id"
+              path="/REACT_VITE_TODOAPP/home/register"
+              element={<Register />}
+            />
+            <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
+            <Route
+              path="/REACT_VITE_TODOAPP/home/timer/:id"
+              element={<Timer />}
+            />
+            <Route
+              path="/REACT_VITE_TODOAPP/home/addTask"
+              element={<AddTask />}
+            />
+            <Route
+              path="/REACT_VITE_TODOAPP/home/eidtTask/:id"
               element={<EditTask />}
             />
           </Route>
