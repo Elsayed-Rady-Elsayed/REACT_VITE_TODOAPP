@@ -6,7 +6,6 @@ import { userAtom } from "../recoil/user";
 import { TasksAtom } from "../recoil/tasksAtom";
 export const fetchUserTasks = async () => {
   const [tasks, setTasks] = useRecoilState(TasksAtom);
-
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {

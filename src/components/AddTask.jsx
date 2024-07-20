@@ -42,14 +42,21 @@ export const AddTask = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     auth.onAuthStateChanged(async (user) => {
-      if (user) {
+      if (
+        user &&
+        TaskData.title.length > 0 &&
+        TaskData.date.length > 0 &&
+        TaskData.start.length > 0 &&
+        TaskData.end.length > 0 &&
+        TaskData.description.length > 0
+      ) {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: [...TaskAtomStored, TaskData],
         });
         navigator("/REACT_VITE_TODOAPP/home");
       } else {
         handleAcceptData();
-        navigator("/REACT_VITE_TODOAPP/home");
+        // navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };
@@ -69,7 +76,6 @@ export const AddTask = () => {
       setAcceptData(false);
     }
   };
-  console.log(TaskAtomStored);
   return (
     <form
       onSubmit={handleSubmit}

@@ -15,7 +15,9 @@ export const ShowTasks = () => {
   const ShowTasksToRender = TaskAtomStored.map((task, idx) => {
     return (
       <TaskCard
+        iSdone={task.done}
         key={idx}
+        id={idx}
         title={task.title}
         date={task.date}
         start={task.start}

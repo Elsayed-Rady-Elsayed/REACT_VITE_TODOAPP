@@ -11,7 +11,11 @@ import { AddTask } from "./components/AddTask";
 import { ShowTasks } from "./components/ShowTasks";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
+import { EditTask } from "./components/EditTask";
+import { fetchUserTasks } from "./firebase/getTasks";
+import { Timer } from "./components/Timer";
 function App() {
+  fetchUserTasks();
   const [content, setContent] = useState(
     <div className="loader">
       <div className="square" id="sq1"></div>
@@ -43,8 +47,16 @@ function App() {
             />
             <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
             <Route
+              path="/REACT_VITE_TODOAPP/home/timer/:id"
+              element={<Timer />}
+            />
+            <Route
               path="/REACT_VITE_TODOAPP/home/addTask"
               element={<AddTask />}
+            />
+            <Route
+              path="/REACT_VITE_TODOAPP/home/eidtTask/:id"
+              element={<EditTask />}
             />
           </Route>
         </Routes>
