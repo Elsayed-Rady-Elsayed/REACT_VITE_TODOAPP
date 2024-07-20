@@ -56,7 +56,6 @@ export const AddTask = () => {
         navigator("/REACT_VITE_TODOAPP/home");
       } else {
         handleAcceptData();
-        navigator("/REACT_VITE_TODOAPP/home");
       }
     });
   };
@@ -69,9 +68,11 @@ export const AddTask = () => {
       TaskData.description.length > 0
     ) {
       setAcceptData(true);
+
       setTaskAtomStored((prev) => {
         return [...prev, TaskData];
       });
+      navigator("/REACT_VITE_TODOAPP/home");
     } else {
       setAcceptData(false);
     }
