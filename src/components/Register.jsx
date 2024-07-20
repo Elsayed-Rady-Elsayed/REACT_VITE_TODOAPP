@@ -57,7 +57,7 @@ export const Register = () => {
           title: "account created successfully",
         });
         setTimeout(() => {
-          navigator("/REACT_VITE_TODOAPP/home");
+          navigator("/home");
         }, 500);
       } catch (e) {
         setAlertData({

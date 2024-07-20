@@ -45,7 +45,7 @@ export const Login = () => {
         });
 
         setTimeout(() => {
-          navigator("/REACT_VITE_TODOAPP/home");
+          navigator("/home");
         }, 500);
       } catch (e) {
         setAlertData({

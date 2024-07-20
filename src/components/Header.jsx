@@ -19,7 +19,7 @@ export const Header = (props) => {
     await auth.signOut();
     setTasks([]);
     setUser({});
-    navigator("/REACT_VITE_TODOAPP/home");
+    navigator("/home");
   };
   const [isLogineduser, setIsLoginedUser] = useState();
   useEffect(() => {
@@ -30,7 +30,7 @@ export const Header = (props) => {
   return (
     <>
       <div className="header container m-auto md:p-5 lg:p-5 flex justify-between items-center py-2 px-2 md:px-10 md:py-5">
-        <Link to="/REACT_VITE_TODOAPP/">
+        <Link to="/">
           <h2
             className={`${
               props.activeTextAnimation ? "animateText" : ""
@@ -55,7 +55,7 @@ export const Header = (props) => {
             </button>
           ) : (
             <Link
-              to="/REACT_VITE_TODOAPP/home/login"
+              to="/home/login"
               className="btn"
               style={{
                 fontSize: "14px",

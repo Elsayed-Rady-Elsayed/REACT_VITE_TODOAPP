@@ -35,29 +35,14 @@ function App() {
       <>
         <Header activeTextAnimation />
         <Routes>
-          <Route
-            path="/REACT_VITE_TODOAPP/"
-            element={<OnBoarding activeTextAnimation />}
-          />
-          <Route path="/REACT_VITE_TODOAPP/home" element={<Home />}>
-            <Route path="/REACT_VITE_TODOAPP/home/login" element={<Login />} />
-            <Route
-              path="/REACT_VITE_TODOAPP/home/register"
-              element={<Register />}
-            />
-            <Route path="/REACT_VITE_TODOAPP/home" element={<ShowTasks />} />
-            <Route
-              path="/REACT_VITE_TODOAPP/home/timer/:id"
-              element={<Timer />}
-            />
-            <Route
-              path="/REACT_VITE_TODOAPP/home/addTask"
-              element={<AddTask />}
-            />
-            <Route
-              path="/REACT_VITE_TODOAPP/home/eidtTask/:id"
-              element={<EditTask />}
-            />
+          <Route path="/" element={<OnBoarding activeTextAnimation />} />
+          <Route path="/home" element={<Home />}>
+            <Route path="/home/login" element={<Login />} />
+            <Route path="/home/register" element={<Register />} />
+            <Route path="/home" element={<ShowTasks />} />
+            <Route path="/home/timer/:id" element={<Timer />} />
+            <Route path="/home/addTask" element={<AddTask />} />
+            <Route path="/home/eidtTask/:id" element={<EditTask />} />
           </Route>
         </Routes>
       </>
