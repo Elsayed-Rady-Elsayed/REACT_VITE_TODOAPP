@@ -16,6 +16,8 @@ export const fetchUserTasks = async () => {
             return [...docSnap.data()["taskData"]];
           });
         }
+      } else {
+        setTasks([...JSON.parse(window.localStorage.getItem("tasks"))]);
       }
     });
   }, []);

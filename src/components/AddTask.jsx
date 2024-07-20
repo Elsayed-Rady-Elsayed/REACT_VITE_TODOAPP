@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "./TextField";
 import { TextArea } from "./TextArea";
 import { BackBtn } from "./BackBtn";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { TasksAtom } from "../recoil/tasksAtom";
 import "../styles/animatedButton.css";
 import { auth, fireStore } from "../firebase/fireBase";
 import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { fetchUserTasks } from "../firebase/getTasks";
+import Cookies from "universal-cookie";
 export const AddTask = () => {
   fetchUserTasks();
+  const cookie = new Cookies();
   const navigator = useNavigate();
   const [TaskData, setTaskData] = useState({
     title: "",
@@ -72,6 +74,7 @@ export const AddTask = () => {
       setTaskAtomStored((prev) => {
         return [...prev, TaskData];
       });
+      console.log(TaskAtomStored);
       navigator("/REACT_VITE_TODOAPP/home");
     } else {
       setAcceptData(false);

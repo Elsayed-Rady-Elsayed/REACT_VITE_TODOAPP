@@ -19,6 +19,7 @@ import { Timer } from "./components/Timer.jsx";
 import { Home } from "./pages/Home.jsx";
 import { AddTask } from "./components/AddTask.jsx";
 import { EditTask } from "./components/EditTask.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/REACT_VITE_TODOAPP/",

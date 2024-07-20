@@ -83,7 +83,16 @@ export const EditTask = () => {
         list = [TaskAtomStored];
         list[taskId] = TaskData;
         setTaskAtomStored(list);
-        navigator("/REACT_VITE_TODOAPP/home");
+        if (
+          TaskData.title.trim().length > 0 &&
+          TaskData.date.length > 0 &&
+          TaskData.start.length > 0 &&
+          TaskData.end.length > 0 &&
+          TaskData.description.length > 0
+        ) {
+          console.log("ok");
+          navigator("/REACT_VITE_TODOAPP/home");
+        }
       }
     });
   };

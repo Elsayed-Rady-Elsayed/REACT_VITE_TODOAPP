@@ -8,10 +8,12 @@ import { fetchUserData } from "../firebase/getUserData";
 import { userAtom } from "../recoil/user";
 import { auth } from "../firebase/fireBase";
 import { fetchUserTasks } from "../firebase/getTasks";
+import Cookies from "universal-cookie";
 export const ShowTasks = () => {
   fetchUserTasks();
   const [TaskAtomStored, setTaskAtomStored] = useRecoilState(TasksAtom);
   const [isLogineduser, setIsLoginedUser] = useState();
+  window.localStorage.setItem("tasks", JSON.stringify(TaskAtomStored));
   const ShowTasksToRender = TaskAtomStored.map((task, idx) => {
     return (
       <TaskCard
