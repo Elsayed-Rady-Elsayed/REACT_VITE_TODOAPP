@@ -28,7 +28,8 @@ export const TaskCard = (props) => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        nav("/REACT_VITE_TODOAPP/home");
+        window.location.href = "/REACT_VITE_TODOAPP/home";
+        // nav("/REACT_VITE_TODOAPP/home");
         reloadPage();
       } else {
         setTasksRec((prevList) =>
@@ -52,7 +53,8 @@ export const TaskCard = (props) => {
         await updateDoc(doc(fireStore, "Users", user.uid), {
           taskData: list,
         });
-        nav("/REACT_VITE_TODOAPP/home");
+        // nav("/REACT_VITE_TODOAPP/home");
+        window.location.href = "/REACT_VITE_TODOAPP/home";
         reloadPage();
       } else {
         let list = [];
