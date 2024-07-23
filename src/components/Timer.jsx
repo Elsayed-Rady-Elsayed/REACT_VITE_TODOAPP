@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Timer.css";
 import { useNavigate } from "react-router-dom";
 import { auth, fireStore } from "../firebase/fireBase";
@@ -10,21 +10,23 @@ export const Timer = (props) => {
   const nav = useNavigate();
   const id = Number(window.location.pathname.split("/").splice(-1).join());
   const [tasksRec, setTasksRec] = useRecoilState(TasksAtom);
-
   let time = "";
   const reloadPage = () => {
     window.location.reload();
   };
   const [seconds, setSeconds] = useState(0);
-
+  const [start, setStart] = useState(false);
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds + 1);
-    }, 1000);
+    let intervalId;
+    if (start) {
+      intervalId = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 1000);
+    }
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [start]);
 
   const formatTime = (totalSeconds) => {
     const hours = Math.floor(totalSeconds / 3600);
@@ -55,35 +57,54 @@ export const Timer = (props) => {
       } else {
         setTasksRec((prevList) =>
           prevList.map((item, idx) =>
-            idx === id ? { ...item, done: !item.done } : item
+            idx === id ? { ...item, done: true } : item
           )
         );
         nav("/REACT_VITE_TODOAPP/home");
       }
     });
   };
+
   return (
-    <div className="text-center flex flex-col items-center">
-      <div className="timer w-56 border p-5 text-2xl mt-6 border-[#596A95] rounded-lg text-white">
+    <div className="text-center flex flex-col items-center  w-4/5 m-auto ">
+      <div className="timer flex items-center justify-center border-4 h-40 w-40 text-3xl mt-6 border-[#596A95] spin rounded-full rounded-lg text-white">
         {formatTime(seconds)}
       </div>
-      <div className="btns flex flex-col md:flex-row w-full gap-2 mt-5">
+      <div className="btns justify-center items-center flex  md:flex-row w-full gap-2 mt-5">
         <button
-          className="btn bg-red-500 w-full"
+          className="btn bg-lime-500 w-20 text-sm"
           onClick={() => {
-            handeSetDone();
+            setStart(true);
           }}
         >
-          End Task
+          Start
         </button>
         <button
-          className="btn bg-yellow-500 w-full"
+          className="btn bg-green-500 w-20 text-sm"
+          onClick={() => {
+            handeSetDone();
+            setStart(false);
+          }}
+        >
+          Done
+        </button>
+        <button
+          className="btn bg-yellow-500 w-20 text-sm"
           onClick={() => {
             nav("/REACT_VITE_TODOAPP/home");
             reloadPage();
+            setStart(false);
           }}
         >
-          Pend Task
+          Pend
+        </button>
+        <button
+          className="btn bg-red-500 w-20 text-sm"
+          onClick={() => {
+            setStart(false);
+          }}
+        >
+          Stop
         </button>
       </div>
     </div>

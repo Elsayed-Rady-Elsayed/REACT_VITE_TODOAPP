@@ -12,6 +12,11 @@ import { fetchUserTasks } from "../firebase/getTasks";
 import Cookies from "universal-cookie";
 export const AddTask = () => {
   fetchUserTasks();
+  const [clickedAdd, setClickedAdd] = useState(false);
+  const [TaskAtomStored, setTaskAtomStored] = useRecoilState(TasksAtom);
+  const [acceptData, setAcceptData] = useState(false);
+  const [isLogineduser, setIsLoginedUser] = useState();
+
   const cookie = new Cookies();
   const navigator = useNavigate();
   const [TaskData, setTaskData] = useState({
@@ -23,9 +28,7 @@ export const AddTask = () => {
     done: false,
     pending: false,
   });
-  const [clickedAdd, setClickedAdd] = useState(false);
-  const [TaskAtomStored, setTaskAtomStored] = useRecoilState(TasksAtom);
-  const [acceptData, setAcceptData] = useState(false);
+
   const handleOnChange = (evt) => {
     const { name, value } = evt.target;
     setTaskData((prev) => {
@@ -35,7 +38,6 @@ export const AddTask = () => {
       };
     });
   };
-  const [isLogineduser, setIsLoginedUser] = useState();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setIsLoginedUser(user);
