@@ -67,7 +67,7 @@ export const Timer = (props) => {
 
   return (
     <div className="text-center flex flex-col items-center  w-4/5 m-auto ">
-      <div className="timer flex items-center justify-center border-4 h-40 w-40 text-3xl mt-6 border-[#596A95] spin rounded-full rounded-lg text-white">
+      <div className="timer flex items-center justify-center border-4 h-40 w-40 text-3xl mt-6 border-[#596A95] spin rounded-full text-white">
         {formatTime(seconds)}
       </div>
       <div className="btns justify-center items-center flex  md:flex-row w-full gap-2 mt-5">
