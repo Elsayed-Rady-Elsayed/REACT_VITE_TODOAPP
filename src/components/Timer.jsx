@@ -12,7 +12,7 @@ export const Timer = (props) => {
   const [tasksRec, setTasksRec] = useRecoilState(TasksAtom);
   let time = "";
   const reloadPage = () => {
-    window.location.reload();
+    // window.location.reload();
   };
   const [seconds, setSeconds] = useState(0);
   const [start, setStart] = useState(false);
@@ -92,7 +92,7 @@ export const Timer = (props) => {
           className="btn bg-yellow-500 w-20 text-sm"
           onClick={() => {
             nav("/REACT_VITE_TODOAPP/home");
-            reloadPage();
+            // reloadPage();
             setStart(false);
           }}
         >
