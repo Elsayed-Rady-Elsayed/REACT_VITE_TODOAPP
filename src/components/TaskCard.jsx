@@ -96,7 +96,9 @@ export const TaskCard = (props) => {
         <i
           onClick={(event) => {
             event.stopPropagation();
-            nav(`/REACT_VITE_TODOAPP/home/timer/${props.id}`);
+            !props.iSdone
+              ? nav(`/REACT_VITE_TODOAPP/home/timer/${props.id}`)
+              : "";
           }}
           className="fa-solid fa-stopwatch-20 text-yellow-500 py-3 px-2"
         ></i>
